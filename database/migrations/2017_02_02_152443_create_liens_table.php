@@ -16,10 +16,10 @@ class CreateLiensTable extends Migration
         // Create table Liens
         Schema::create('liens', function(Blueprint $table) {
             $table->integer('idCandidat')->unsigned();
-            $table->string('nom');
+            $table->string('label');
             $table->text('url');
 
-            $table->primary(['idCandidat', 'nom']);
+            $table->primary(['idCandidat', 'label']);
             $table->foreign('idCandidat')->references('idCandidat')->on('candidats')->onDelete('cascade');
         });
     }
