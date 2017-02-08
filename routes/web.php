@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/departement/{dep}/circonscription/{circo}', 'CirconscriptionController@show');
+Route::resource('circonscription', 'CirconscriptionController');

@@ -14,17 +14,4 @@ class Controller extends BaseController
     public function index(){
         return view('welcome');
     }
-
-    public function departement($dep){
-        return $dep;
-    }
-
-    public function circonscription(){
-        return view('');
-    }
-
-    public function edit(){
-        $this->middleware('auth');
-        return view('');
-    }
 }

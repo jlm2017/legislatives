@@ -17,12 +17,18 @@ class CreateCirconscriptionsTable extends Migration
         Schema::create('circonscriptions', function(Blueprint $table) {
             $table->integer('numDep');
             $table->integer('numCirco');
-            $table->integer('titulaire')->unsigned();
-            $table->integer('suppleant')->unsigned();
+            $table->string('prenomTitu');
+            $table->string('nomTitu');
+            $table->string('bioTitu');
+            $table->string('prenomSupp');
+            $table->string('nomSupp');
+            $table->string('bioSupp');
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('email')->nullable();
+            $table->string('blog')->nullable();
 
             $table->primary(['numDep', 'numCirco']);
-            $table->foreign('titulaire')->references('idCandidat')->on('candidats')->onDelete('cascade');
-            $table->foreign('suppleant')->references('idCandidat')->on('candidats')->onDelete('cascade');
         });
     }
 
