@@ -5,5 +5,5 @@
 @endsection
 
 @section('data')
-    {{ $test }}
+    {{ var_dump($circonscriptions) }}
 @endsection
