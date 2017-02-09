@@ -9,4 +9,5 @@
         {!! Form::file('circonscriptions'); !!}
         {!! Form::submit('Envoyer !') !!}
     {!! Form::close() !!}
+    {{ isset($message) ? $message : 'Enter your csv file' }}
 @endsection

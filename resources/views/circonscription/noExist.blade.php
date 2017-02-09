@@ -1,9 +1,9 @@
 @extends('circonscription/layout')
 
 @section('title')
-    Affiche circo
+    Les circonscriptions
 @endsection
 
 @section('data')
-    {{var_dump($circonscription)}}
+    Désolé, cette circonscription n'a pas encore été mise à jour.
 @endsection

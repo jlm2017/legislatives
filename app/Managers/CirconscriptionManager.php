@@ -3,6 +3,7 @@
 namespace App\Managers;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Excel;
 use App\Circonscription;
 
@@ -15,8 +16,7 @@ class CirconscriptionManager
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function import($file)
-    {
+    public static function import($file){
         //
 
         Excel::load($file)->each(function (Collection $csvLine) {
@@ -40,4 +40,11 @@ class CirconscriptionManager
         });
     }
 
+    public static function getAll(){
+        return DB::table('circonscriptions')->get();
+    }
+
+    public static function getCirco($numDep, $numCirco){
+        return DB::table('circonscriptions')->where(['numDep' => $numDep, 'numCirco' => $numCirco])->first();
+    }
 }

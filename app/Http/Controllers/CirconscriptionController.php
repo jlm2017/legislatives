@@ -15,8 +15,8 @@ class CirconscriptionController extends Controller
     public function index()
     {
         //
-        $test = "Un premier test !";
-        return view('circonscription.index')->withTest($test);
+        $circonscriptions = CirconscriptionManager::getAll();
+        return view('circonscription.index')->withCirconscriptions($circonscriptions);
     }
 
     /**
@@ -36,15 +36,21 @@ class CirconscriptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, CirconscriptionManager $circonscriptionManager)
+    public function store(Request $request)
     {
         if ($request->hasFile('circonscriptions')){
-            $file = $request->file('circonscriptions');
+            if ($request->file('circonscriptions')->isValid()){
+                $file = $request->file('circonscriptions');
+            } else {
+                return view('circonscription.create')->withMessage('Problem uploading the file...');
+            }
         } else {
-            return var_dump($request->file('circonscriptions'));
+            return view('circonscription.create')->withMessage('File is missing !');
         }
 
-        $circonscriptionManager->import($file);
+        CirconscriptionManager::import($file);
+        return view('circonscription.create')->withMessage('success !');
+
     }
 
     /**
@@ -56,7 +62,13 @@ class CirconscriptionController extends Controller
     public function show($dep, $circo)
     {
         //
-        return view('circonscription.show')->with(['dep' => $dep, 'circo' => $circo]);
+        $circonscription = CirconscriptionManager::getCirco($dep, $circo);
+        if($circonscription!=NULL){
+            return view('circonscription.show')->withCirconscription($circonscription);
+        } else {
+            return view('circonscription/noExist');
+        }
+
     }
 
     /**
