@@ -47,5 +47,4 @@ class CirconscriptionManager
     public static function getCirco($numDep, $numCirco){
         return DB::table('circonscriptions')->where(['numDep' => $numDep, 'numCirco' => $numCirco])->first();
     }
-
 }

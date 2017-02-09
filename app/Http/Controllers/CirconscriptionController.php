@@ -50,6 +50,7 @@ class CirconscriptionController extends Controller
 
         CirconscriptionManager::import($file);
         return view('circonscription.create')->withMessage('success !');
+
     }
 
     /**
