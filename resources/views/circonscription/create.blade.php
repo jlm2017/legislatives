@@ -1,11 +1,11 @@
-@extends('circonscription/layout')
+@extends('layout')
 
 @section('title')
     Upload circonscription
 @endsection
 
 @section('data')
-    {!! Form::open(['url' => 'circonscription', 'files' => true]) !!}
+    {!! Form::open(['url' => 'circonscriptions/create', 'files' => true]) !!}
         {!! Form::file('circonscriptions'); !!}
         {!! Form::submit('Envoyer !') !!}
     {!! Form::close() !!}
