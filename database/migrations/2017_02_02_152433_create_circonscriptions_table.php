@@ -15,6 +15,7 @@ class CreateCirconscriptionsTable extends Migration
     {
         // Create table Circonscriptions
         Schema::create('circonscriptions', function(Blueprint $table) {
+            $table->increments('id');
             $table->integer('numDep');
             $table->integer('numCirco');
             $table->string('prenomTitu');
@@ -28,7 +29,7 @@ class CreateCirconscriptionsTable extends Migration
             $table->string('email')->nullable();
             $table->string('blog')->nullable();
 
-            $table->primary(['numDep', 'numCirco']);
+            $table->unique(['numDep', 'numCirco']);
         });
     }
 
