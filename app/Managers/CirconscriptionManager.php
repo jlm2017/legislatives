@@ -24,6 +24,9 @@ class CirconscriptionManager
             $circonscription = Circonscription::updateOrCreate([
                 'numDep' => $csvLine->get('numdep'),
                 'numCirco' => $csvLine->get('numcirco'),
+            ],
+
+            [
                 'prenomTitu' => $csvLine->get('prenomtitu'),
                 'nomTitu' => $csvLine->get('nomtitu'),
                 'bioTitu' => $csvLine->get('biotitu'),
@@ -36,7 +39,6 @@ class CirconscriptionManager
                 'blog' => $csvLine->get('blog'),
             ]);
 
-            $circonscription->save();
         });
     }
 
@@ -46,5 +48,9 @@ class CirconscriptionManager
 
     public static function getCirco($numDep, $numCirco){
         return DB::table('circonscriptions')->where(['numDep' => $numDep, 'numCirco' => $numCirco])->first();
+    }
+
+    public static function getCircos($numDep){
+        return DB::table('circonscriptions')->where('numDep', $numDep)->get();
     }
 }
