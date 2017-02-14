@@ -12,11 +12,9 @@ class CirconscriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function map()
     {
-        //
-        $circonscriptions = CirconscriptionManager::getAll();
-        return view('circonscription.index')->withCirconscriptions($circonscriptions);
+        return view('circonscription.map');
     }
 
     /**
@@ -26,7 +24,6 @@ class CirconscriptionController extends Controller
      */
     public function create()
     {
-        //
         return view('circonscription.create');
     }
 
@@ -56,17 +53,16 @@ class CirconscriptionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $dep, $circo
      * @return \Illuminate\Http\Response
      */
     public function show($dep, $circo)
     {
-        //
         $circonscription = CirconscriptionManager::getCirco($dep, $circo);
-        if($circonscription!=NULL){
-            return view('circonscription.show')->withCirconscription($circonscription);
-        } else {
+        if(empty($circonscription)){
             return view('circonscription/noExist');
+        } else {
+            return view('circonscription.show')->withCirconscription($circonscription);
         }
 
     }
