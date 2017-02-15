@@ -10,4 +10,5 @@
         {!! Form::submit('Envoyer !') !!}
     {!! Form::close() !!}
     {{ isset($message) ? $message : 'Enter your csv file' }}
+    {{Auth::logout()}}
 @endsection

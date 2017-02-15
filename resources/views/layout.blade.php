@@ -23,7 +23,6 @@
           <ul class="nav navbar-nav" role="group">
             <li><a href="/">Accueil</a></li>
             <li><a href="/circonscriptions">Les circonscriptions</a>
-            <li><a href="/circonscriptions/create">Importer</a></li>
           </ul>
         </div>
       </div>

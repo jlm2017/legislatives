@@ -38,9 +38,11 @@ Route::get('/departement/{dep}/circonscription/{circo}/edit', 'CirconscriptionCo
 /**
  * Get the form to upload a csv file
  */
-Route::get('/circonscriptions/create', 'CirconscriptionController@create');
+Route::get('/circonscriptions/create', 'CirconscriptionController@create')->middleware('auth');
 
 /**
  * Post the form to import csv file in database and create or update circonscription(s)
  */
 Route::post('/circonscriptions/create', 'CirconscriptionController@store');
+
+Auth::routes();
