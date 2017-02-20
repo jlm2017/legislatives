@@ -11,14 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /**
  * Get the form and map to choose departement or circonscription
  */
-Route::get('/circonscriptions', 'CirconscriptionController@map');
+Route::get('/', 'CirconscriptionController@map');
 
 /**
  * Get 1 circonscription by departement and circonscription
@@ -33,7 +29,7 @@ Route::get('/departement/{dep}/circonscription/{circo}/edit', 'CirconscriptionCo
 /**
  * Update circonscription with form by post
  */
- Route::post('/departement/{dep}/circonscription/{circo}/edit', 'CirconscriptionController@update')->where(['dep' => '[0-9]+', 'circo' => '[0-9]+']);
+Route::post('/departement/{dep}/circonscription/{circo}/edit', 'CirconscriptionController@update')->where(['dep' => '[0-9]+', 'circo' => '[0-9]+']);
 
 /**
  * Get the form to upload a csv file
@@ -43,6 +39,6 @@ Route::get('/circonscriptions/create', 'CirconscriptionController@create')->midd
 /**
  * Post the form to import csv file in database and create or update circonscription(s)
  */
-Route::post('/circonscriptions/create', 'CirconscriptionController@store');
+Route::post('/circonscriptions/create', 'CirconscriptionController@store')->middleware('auth');
 
 Auth::routes();
