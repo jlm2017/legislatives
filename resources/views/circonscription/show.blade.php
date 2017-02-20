@@ -13,24 +13,35 @@
         <div class="candidat">
             <div class="nom">
                 <h4>{{$circonscription->prenomTitu}} {{$circonscription->nomTitu}}</h4>
+                Titulaire
             </div>
             <div class="photo">
-                <img src="http://lorempixel.com/400/200" alt="photoTitulaire">
+                @if(file_exists('/photos/'.$circonscription->numDep.'_'.$circonscription->numCirco.'_T.jpeg'))
+                    <img src='/photos/{{$circonscription->numDep}}_{{$circonscription->numCirco}}_T.jpeg' alt="">
+                @else
+                    <img src='/photos/default.jpeg' alt="photoSuppléant">
+                @endif
             </div>
             <div class="bio">
-                {{$circonscription->bioTitu}}
+                <p>{{$circonscription->bioTitu}}</p>
             </div>
         </div>
 
         <div class="candidat">
             <div class="nom">
                 <h4>{{$circonscription->prenomSupp}} {{$circonscription->nomSupp}}</h4>
+                Suppléant
             </div>
             <div class="photo">
-                <img src="http://lorempixel.com/400/200" alt="photoSuppléant">
+                @if(file_exists('/photos/'.$circonscription->numDep.'_'.$circonscription->numCirco.'_S.jpeg'))
+                    <img src='/photos/{{$circonscription->numDep}}_{{$circonscription->numCirco}}_S.jpeg' alt="">
+                @else
+                    <img src='/photos/default.jpeg' alt="photoSuppléant">
+                @endif
+
             </div>
             <div class="bio">
-                {{$circonscription->bioSupp}}
+                <p>{{$circonscription->bioSupp}}</p>
             </div>
         </div>
     </div>
@@ -53,9 +64,6 @@
     </div>
 
     <style media="screen">
-        .lien{
-            list-style-type: none;
-        }
         .circonscription{
             display: block;
             text-align: center;
@@ -68,13 +76,13 @@
         .candidat{
             display: inline-block;
             margin: auto;
-            width: 500px;
+            max-width: 600px;
         }
         .photo{
             margin: 25px;
         }
         .bio{
-            width: 500px;
+            text-align: left;
         }
     </style>
 @endsection
