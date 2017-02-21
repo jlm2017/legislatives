@@ -5,6 +5,15 @@
 @endsection
 
 @section('data')
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
     <div class="circonscription">
         <h3>Département {{$circonscription->numDep}} circonscription n°{{$circonscription->numCirco}}</h3>
     </div>
@@ -46,16 +55,19 @@
         </div>
     </div>
     <hr />
+    <div class="social">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="fb-page" data-href="{{$circonscription->facebook}}" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false"><blockquote cite="{{$circonscription->facebook}}" class="fb-xfbml-parse-ignore"><a href="{{$circonscription->facebook}}"></a></blockquote></div>
+            </div>
+            <div class="col-xs-6">
+                <a class="twitter-timeline" data-lang="fr" data-width="400" data-height="550" data-dnt="true" data-link-color="#E81C4F" href="{{$circonscription->twitter}}"></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+    </div>
     <div class="liens text-center">
         <div class="row">
             <div class="col-xs-6">
-                <a class="btn btn-lg" href="{{$circonscription->facebook}}">Facebook</a>
-            </div>
-            <div class="col-xs-6">
                 <a class="btn btn-lg" href="{{$circonscription->blog}}">Site Web</a>
-            </div>
-            <div class="col-xs-6">
-                <a class="btn btn-lg" href="{{$circonscription->twitter}}">Twitter</a>
             </div>
             <div class="col-xs-6">
                 <a class="btn btn-lg" href="mailto:{{$circonscription->email}}">Contact email</a>
