@@ -18,12 +18,12 @@ class CreateCirconscriptionsTable extends Migration
             $table->increments('id');
             $table->integer('numDep');
             $table->integer('numCirco');
-            $table->string('prenomTitu');
+            $table->string('prenomTitu')->nullable();
             $table->string('nomTitu');
             $table->string('bioTitu');
-            $table->string('prenomSupp');
-            $table->string('nomSupp');
-            $table->string('bioSupp');
+            $table->string('prenomSupp')->nullable();
+            $table->string('nomSupp')->nullable();
+            $table->string('bioSupp')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('email')->nullable();

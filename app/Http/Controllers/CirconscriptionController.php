@@ -39,14 +39,14 @@ class CirconscriptionController extends Controller
             if ($request->file('circonscriptions')->isValid()){
                 $file = $request->file('circonscriptions');
             } else {
-                return view('circonscription.create')->withMessage('Problem uploading the file...');
+                return view('circonscription.create')->withMessage('Un problème et survenu pendant l\'upload du fichier...');
             }
         } else {
-            return view('circonscription.create')->withMessage('File is missing !');
+            return view('circonscription.create')->withMessage('Le fichier est manquant !');
         }
 
         CirconscriptionManager::import($file);
-        return view('circonscription.create')->withMessage('success !');
+        return view('circonscription.create')->withMessage('Le fichier a bien été importé !');
 
     }
 
@@ -58,13 +58,20 @@ class CirconscriptionController extends Controller
      */
     public function show($dep, $circo)
     {
+        // Get circonscription from DB
         $circonscription = CirconscriptionManager::getCirco($dep, $circo);
-        if(empty($circonscription)){
-            return view('circonscription/noExist');
-        } else {
-            return view('circonscription.show')->withCirconscription($circonscription);
-        }
 
+        // If circonscription empty return don't exit view
+        // Else check the circonscription state
+        if(empty($circonscription)){
+            return view('circonscription/noExist')->withMessage("Cette circonscription n'existe pas ou n'a pas encore été mise à jour.");
+        } else {
+            if ($circonscription->nomTitu === "not") {
+                return view('circonscription/noExist')->withMessage($circonscription->bioTitu);
+            } else {
+                return view('circonscription.show')->withCirconscription($circonscription);
+            }
+        }
     }
 
     /**

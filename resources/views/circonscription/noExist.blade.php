@@ -5,5 +5,5 @@
 @endsection
 
 @section('data')
-    Cette circonscription n'existe pas ou n'a pas encore été mise à jour.
+    <p>{{$message}}</p>
 @endsection
