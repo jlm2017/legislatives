@@ -30,7 +30,7 @@
                 @if(file_exists('/photos/'.$circonscription->numDep.'_'.$circonscription->numCirco.'_T.jpeg'))
                     <img src='/photos/{{$circonscription->numDep}}_{{$circonscription->numCirco}}_T.jpeg' alt="">
                 @else
-                    <img src='/photos/default.jpeg' alt="photoSuppléant">
+                    <img src='/photos/default.jpeg' alt="photoTitulaire">
                 @endif
             </div>
             <div class="bio">
