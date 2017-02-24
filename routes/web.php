@@ -12,7 +12,7 @@
 */
 
 /**
- * Get the form and map to choose departement or circonscription
+ * Get the form and map to choose circonscription
  */
 Route::get('/', 'CirconscriptionController@map');
 
