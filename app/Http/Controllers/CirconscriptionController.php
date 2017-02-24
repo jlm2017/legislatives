@@ -69,7 +69,9 @@ class CirconscriptionController extends Controller
             if ($circonscription->nomTitu === "not") {
                 return view('circonscription/noExist')->withMessage($circonscription->bioTitu);
             } else {
-                return view('circonscription.show')->withCirconscription($circonscription);
+                // send circo coords to zoom on the map
+                $json = json_decode(file_get_contents(storage_path() . "/minmaxCoordsCirco.json"), true);
+                return view('circonscription.show')->with(['circonscription' => $circonscription, 'coords' => $json[$dep][$circo]]);
             }
         }
     }

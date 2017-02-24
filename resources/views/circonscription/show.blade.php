@@ -5,6 +5,8 @@
 @endsection
 
 @section('data')
+
+    <!-- Facebook script -->
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -54,7 +56,9 @@
             </div>
         </div>
     </div>
+
     <hr />
+
     <div class="social">
         <div class="row">
             <div class="col-xs-6">
@@ -64,6 +68,7 @@
                 <a class="twitter-timeline" data-lang="fr" data-width="400" data-height="550" data-dnt="true" data-link-color="#E81C4F" href="{{$circonscription->twitter}}"></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
     </div>
+
     <div class="liens text-center">
         <div class="row">
             <div class="col-xs-6">
@@ -73,6 +78,13 @@
                 <a class="btn btn-lg" href="mailto:{{$circonscription->email}}">Contact email</a>
             </div>
         </div>
+    </div>
+
+    <div class="map">
+        <iframe
+            style="border: none; margin: 0 0; padding: 0 0; width: 80%; height: 400px"
+            src="https://jlm2017.github.io/map/?hide_address=1&borderfit={{$coords['maxlat']}},{{$coords['maxlong']}},{{$coords['minlat']}},{{$coords['minlong']}}">
+        </iframe>
     </div>
 
     <style media="screen">
