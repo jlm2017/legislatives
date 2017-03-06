@@ -39,6 +39,12 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+
+    protected function showRegistrationForm()
+    {
+        return redirect()->to('login')->with('warning', 'Registration is disabled.');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
