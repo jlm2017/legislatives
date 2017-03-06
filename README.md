@@ -1,40 +1,54 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+                                      Manuel d’utilisation
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+1- import des circonscriptions
 
-## About Laravel
+Afin d’importer le fichier excel comprenant la liste des circonscriptions et leurs candidats (ou non) associés, le dit fichier doit respecter certaines normes.
+Les colonnes seront au nombre de 12 et nommées comme suit : numDep, numCirco, prenomTitu, nomTitu, bioTitu, prenomSupp, nomSupp, bioSupp, facebook, twitter, email, blog.
+L’ordre n’a pas d’importance. La casse (majuscule/minuscule) n’a pas d’importance.
+Les champs numDep, numCirco, nomTitu et bioTitu ne peuvent pas être vide.
+Le fichier doit être enregistré au format de texte CSV.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+Une fois votre fichier prêt, rendez vous sur la page nomdedomaine/circonscriptions/create
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Un mini formulaire composé d’un bouton vous permettant de selectionner votre fichier, et d’un bouton de validation. Insérez donc votre fichier csv et validez.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+Un petit message devrait apparaître pour vous signaler le succès de l’import de celui ci ou non. Si échec il y a, il se peut que le fichier soit manquant (erreur de manipulation) ou qu’un problème soit survenu lors de l’upload (entre le moment où le fichier est envoyé et le moment où il est reçu). Pour ces 2 situations l’erreur vous sera indiqué et je vous invite à recommencer. Si cela est sans succès alors contactez le service informatique.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+2- visualisation des circonscriptions
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+Une fois le fichier importé vous pouvez vérifier par vous même l’état des circonscriptions. Si vous ne voulez pas chercher celles ci sur la carte vous pouvez taper l’adresse url comme suit : nomdedomaine/departement/numDep/circonscription/numCirco
+(exemple : legislatives2017/departement/01/circonscription/2
+ou legislativesfranceinsoumise/departement/01/circonscription/3
+notez que vous devez écrire les numéros de département à un chiffre avec le 0.)
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+3- modification des circonscriptions
 
-## Security Vulnerabilities
+Si vous souhaitez ajouter ou modifier des circonscriptions vous pouvez soit reprendre votre fichier csv, le modifier et l’importer comme précédemment ou prendre un nouveau fichier, le remplir avec les circonscriptions que vous voulez ajouter et/ou modifier et l’importer comme précédemment.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Si une circonscription existe déjà en base de données, indépendemment de sa position. Si elle existe il va la mettre à jour avec les informations, qu’elles soient identiques ou non aux précédentes. Si elle n’existe pas, il va l’ajouter avec les informations correspondantes.
 
-## License
+Donc, vous pouvez reprendre votre ancien fichier, y laisser vos circonscriptions même si vous les avez déjà ajoutés, elles ne seront pas dupliqués et/ou ré ajoutés.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+4- suppression des circonscriptions
+
+Ce que cela signifie également c’est que importer un nouveau fichier sans certaines circonscriptions précédemment ajoutées ne va pas les supprimer.
+Si vous souhaitez supprimer une circonscription (dans le cas où vous en auriez ajouté une qui n’existe physiquement pas, par exemple la 10e circonscription de l’Ain) au moment où j’écris ces lignes la seule manière de le faire est manuelle, directement dans la base de données. Pour supprimer une circonscription contactez le service informatique.
+
+
+5- message personnalisé sur les circonscriptions
+
+Si une circonscription n’a pas de candidat et que vous souhaitez afficher un message personnalisé pour celle ci, ajoutez une ligne correspondante à cette circonscription dans votre fichier csv, avec au sein du champ nomTitu la chaine de caractère suivante : « noexist » et dans le champ bioTitu votre message personnalisé.
+
+
+6- créé un utilisateur
+
+sur console veuillez suivre cette procédure:
+  - php artisan tinker /* ouvre l'invite de comande liéé a laravel*/
+  - $user = new App\User();
+  - $user->password = Hash::make('the-password-of-choice');
+  - $user->email = 'the-email@example.com';
+  - $user->name = 'the-name';
+  - $user->save();
