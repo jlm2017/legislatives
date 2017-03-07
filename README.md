@@ -22,8 +22,27 @@ Une fois le fichier importé vous pouvez vérifier par vous même l’état des 
 ou legislativesfranceinsoumise/departement/01/circonscription/3
 notez que vous devez écrire les numéros de département à un chiffre avec le 0.)
 
+3- photos des candidats
 
-3- modification des circonscriptions
+Le nom des photos des candidat doit être de la forme:
+
+[numéroDepartement]_[numéroCirconscription]_T.jpeg pour les titulaires
+  par exemple: 1_2_T.jpg
+    pour la photo du titulaire de l'Ain (département 01) deuxieme circonscription
+
+
+[numéroDepartement]_[numéroCirconscription]_S.jpeg pour les suppléants
+  par exemple: 1_2_S.jpg
+    pour la photo du supléant de l'Ain (département 01) deuxieme circonscription
+
+
+remarque: les photos des départements à un chiffre (l'Ain, l'Aisne, l'Allier, ....) doivent avoir dans
+          leur nom un numéro de département a un chiffre.
+          Concrétement: numéroDepartement vaut 1 pour l'Ain, 2 pour l'Aisne, 3 pour Allier, ... 9
+                        pour l'Ariège.
+
+
+4- modification des circonscriptions
 
 Si vous souhaitez ajouter ou modifier des circonscriptions vous pouvez soit reprendre votre fichier csv, le modifier et l’importer comme précédemment ou prendre un nouveau fichier, le remplir avec les circonscriptions que vous voulez ajouter et/ou modifier et l’importer comme précédemment.
 
@@ -32,18 +51,18 @@ Si une circonscription existe déjà en base de données, indépendemment de sa 
 Donc, vous pouvez reprendre votre ancien fichier, y laisser vos circonscriptions même si vous les avez déjà ajoutés, elles ne seront pas dupliqués et/ou ré ajoutés.
 
 
-4- suppression des circonscriptions
+5- suppression des circonscriptions
 
 Ce que cela signifie également c’est que importer un nouveau fichier sans certaines circonscriptions précédemment ajoutées ne va pas les supprimer.
 Si vous souhaitez supprimer une circonscription (dans le cas où vous en auriez ajouté une qui n’existe physiquement pas, par exemple la 10e circonscription de l’Ain) au moment où j’écris ces lignes la seule manière de le faire est manuelle, directement dans la base de données. Pour supprimer une circonscription contactez le service informatique.
 
 
-5- message personnalisé sur les circonscriptions
+6- message personnalisé sur les circonscriptions
 
 Si une circonscription n’a pas de candidat et que vous souhaitez afficher un message personnalisé pour celle ci, ajoutez une ligne correspondante à cette circonscription dans votre fichier csv, avec au sein du champ nomTitu la chaine de caractère suivante : « noexist » et dans le champ bioTitu votre message personnalisé.
 
 
-6- créé un utilisateur
+7- créé un utilisateur
 
 sur console veuillez suivre cette procédure:
   - php artisan tinker /* ouvre l'invite de comande liéé a laravel*/
