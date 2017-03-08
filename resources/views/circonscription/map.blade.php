@@ -60,9 +60,9 @@
 
 @section('data')
     <div class="map">
-        <a href="https://github.com/jlm2017" target="_blank" title="Fork me on GitHub">
+        <!-- <a href="https://github.com/jlm2017" target="_blank" title="Fork me on GitHub">
             <img src="https://jlm2017.github.io/theme/images/github_small.png" style="position: absolute; bottom: 10px; left: 10px; z-index: 1000;"/>
-        </a>
+        </a> -->
 
         <div id="map"></div>
 
@@ -100,17 +100,17 @@
                 attribution: '<a href="http://osm.org/copyright">OpenStreetMap</a>'
             });
 
-            var latlng = L.latLng(43, 2);
+            var latlng = L.latLng(47, 2);
             var map = L.map('map', {
                 center: latlng,
-                zoom: 6,
+                zoom: 5,
                 layers: [tiles]
             });
 
             //coordinates which fit the map to the france area
             var limites = [
-                [46.783787, 9.587328],
-                [46.352263, -4.627801]
+              [42.783787, 9.587328],
+              [50.352263, -4.627801]
             ];
             map.fitBounds(limites);
 

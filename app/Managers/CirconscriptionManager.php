@@ -46,6 +46,10 @@ class CirconscriptionManager
         return DB::table('circonscriptions')->get();
     }
 
+    public static function getAllDep(){
+        return DB::table('circonscriptions')->pluck('numDep');
+    }
+
     public static function getCirco($numDep, $numCirco){
         return DB::table('circonscriptions')->where(['numDep' => $numDep, 'numCirco' => $numCirco])->first();
     }

@@ -19,31 +19,39 @@
 </head>
 <body>
     <header>
-        <h1 class="text-center">Legislatives - France Insoumise</h1>
-        <ul class="nav navbar-nav navbar-right">
-            <!-- Authentication Links -->
-            @if (!Auth::guest())
-                <li class="dropdown">
+        <!-- <h1 class="text-center">Legislatives - France Insoumise</h1> -->
+        <nav class="navbar navbar-supporter" style="margin-top: 0px; margin-bottom: 0px;">
+          <div class="container">
+            <div id="supporter-nav-collapse" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav" role="group">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/circonscriptions">Les circonscriptions</a>
+              </ul>
+              <ul class="nav navbar-nav pull-right">
+                @if (!Auth::guest())
+                  <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                      {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
-
                     <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
+                      <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                          Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                        </form>
+                      </li>
+                      <li><a href="/circonscriptions/create">Importer</a></li>
                     </ul>
-                </li>
-            @endif
-        </ul>
+                  </li>
+                @endif
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <ul class="nav navbar-nav navbar-right">
+      </ul>
     </header>
 
     <hr />

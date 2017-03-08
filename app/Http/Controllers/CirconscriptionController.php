@@ -50,6 +50,38 @@ class CirconscriptionController extends Controller
 
     }
 
+    public function search()
+    {
+        $deps = [];
+        $Deps = CirconscriptionManager::getAllDep();
+        foreach ($Deps as $dep) {
+          if (strlen($dep) === 1) {
+            $dep = '0' . $dep;
+          }
+          $deps[$dep] = $dep;
+        }
+        return view('circonscription.search')->with(['deps' => $deps]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function list(Request $request)
+    {
+        if ($request->has('dep')){
+            $dep = $request->dep;
+            $circonscriptions = CirconscriptionManager::getCircos($dep);
+        } else {
+            return view('circonscription.search')->withMessage('Veuillez sélectionner un numéro de département');
+        }
+
+        return view('circonscription.list')->with(['dep' => $dep, 'circonscriptions' => $circonscriptions]);
+
+    }
+
     /**
      * Display the specified resource.
      *

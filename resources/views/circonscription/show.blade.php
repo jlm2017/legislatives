@@ -34,7 +34,7 @@
                 @endif
             </div>
             <div class="bio">
-                <p>{{$circonscription->bioTitu}}</p>
+                <p class="text-center">{{$circonscription->bioTitu}}</p>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
 
             </div>
             <div class="bio">
-                <p>{{$circonscription->bioSupp}}</p>
+                <p class="text-center">{{$circonscription->bioSupp}}</p>
             </div>
         </div>
     </div>
@@ -61,26 +61,26 @@
 
     <div class="social">
         <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-6 text-center">
                 <div class="fb-page" data-href="{{$circonscription->facebook}}" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false"><blockquote cite="{{$circonscription->facebook}}" class="fb-xfbml-parse-ignore"><a href="{{$circonscription->facebook}}"></a></blockquote></div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-6 text-center">
                 <a class="twitter-timeline" data-lang="fr" data-width="400" data-height="550" data-dnt="true" data-link-color="#E81C4F" href="{{$circonscription->twitter}}"></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
     </div>
 
     <div class="liens text-center">
         <div class="row">
-            <div class="col-xs-6">
-                <a class="btn btn-lg" href="{{$circonscription->blog}}">Site Web</a>
+            <div class="col-xs-6 text-center">
+                <a class="btn btn-lg" href="{{$circonscription->blog}}" target="_blank">Site Web</a>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-6 text-center">
                 <a class="btn btn-lg" href="mailto:{{$circonscription->email}}">Contact email</a>
             </div>
         </div>
     </div>
 
-    <div class="map">
+    <div class="map text-center">
         <iframe
             style="border: none; margin: 0 0; padding: 0 0; width: 80%; height: 400px"
             src="https://jlm2017.github.io/map/?hide_address=1&borderfit={{$coords['maxlat']}},{{$coords['maxlong']}},{{$coords['minlat']}},{{$coords['minlong']}}">

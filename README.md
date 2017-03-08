@@ -42,6 +42,9 @@ remarque: les photos des départements à un chiffre (l'Ain, l'Aisne, l'Allier, 
                         pour l'Ariège.
 
 
+les photos ne devraient, dans l'idéal, pas exeder les 200 KO (kilo octets) et avoir une largeur d'environs 400px.
+
+
 4- modification des circonscriptions
 
 Si vous souhaitez ajouter ou modifier des circonscriptions vous pouvez soit reprendre votre fichier csv, le modifier et l’importer comme précédemment ou prendre un nouveau fichier, le remplir avec les circonscriptions que vous voulez ajouter et/ou modifier et l’importer comme précédemment.
