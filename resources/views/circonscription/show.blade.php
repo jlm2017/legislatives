@@ -17,7 +17,7 @@
     }(document, 'script', 'facebook-jssdk'));</script>
 
     <div class="circonscription">
-        <h3>Département {{$circonscription->numDep}} circonscription n°{{$circonscription->numCirco}}</h3>
+        <h3>Département {{$nomDep}} - {{$ordinal}} circonscription</h3>
     </div>
     <hr />
     <div class="candidats text-center">
@@ -67,17 +67,26 @@
             <div class="col-xs-6 text-center">
                 <a class="twitter-timeline" data-lang="fr" data-width="400" data-height="550" data-dnt="true" data-link-color="#E81C4F" href="{{$circonscription->twitter}}"></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
+        </div>
     </div>
 
     <div class="liens text-center">
-        <div class="row">
-            <div class="col-xs-6 text-center">
-                <a class="btn btn-lg" href="{{$circonscription->blog}}" target="_blank">Site Web</a>
+        @if(isset($circonscription->blog))
+            <div class="row">
+                <div class="col-xs-6 text-center">
+                    <a class="btn btn-lg" href="{{$circonscription->blog}}" target="_blank">En savoir plus</a>
+                </div>
+                <div class="col-xs-6 text-center">
+                    <a class="btn btn-lg" href="mailto:{{$circonscription->email}}">{{$circonscription->email}}</a>
+                </div>
             </div>
-            <div class="col-xs-6 text-center">
-                <a class="btn btn-lg" href="mailto:{{$circonscription->email}}">Contact email</a>
+        @else
+            <div class="row">
+                <div class="col-xs-offset-3 col-xs-6 text-center">
+                    <a class="btn btn-lg" href="mailto:{{$circonscription->email}}">{{$circonscription->email}}</a>
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 
     <div class="map text-center">

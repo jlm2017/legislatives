@@ -21,11 +21,21 @@
     <header>
         <!-- <h1 class="text-center">Legislatives - France Insoumise</h1> -->
         <nav class="navbar navbar-supporter" style="margin-top: 0px; margin-bottom: 0px;">
-          <div class="container">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#supporter-nav-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
             <div id="supporter-nav-collapse" class="collapse navbar-collapse">
               <ul class="nav navbar-nav" role="group">
                 <li><a href="/">Accueil</a></li>
-                <li><a href="/circonscriptions">Les circonscriptions</a>
+                <li><a href="/circonscriptions">Les circonscriptions</a></li>
+                <li><a href="/formationLegislative">Formation législative</a></li>
+                <li><a href="https://avenirencommun.fr/" target="_blank">Programme</a></li>
               </ul>
               <ul class="nav navbar-nav pull-right">
                 @if (!Auth::guest())
@@ -51,7 +61,7 @@
           </div>
         </nav>
         <ul class="nav navbar-nav navbar-right">
-      </ul>
+        </ul>
     </header>
 
     <hr />

@@ -51,4 +51,6 @@ Route::get('/circonscriptions', 'CirconscriptionController@search');
  */
 Route::post('/circonscriptions', 'CirconscriptionController@list');
 
+Route::get('/formationLegislative', 'CirconscriptionController@formationLegislative');
+
 Auth::routes();

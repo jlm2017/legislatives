@@ -5,12 +5,12 @@
 @endsection
 
 @section('data')
-    <div class="">
-        <h3>Département {{$dep}}</h3>
+    <div class="text-center">
+        <h3>Liste des circonscriptions - {{$dep}}</h3>
+        <hr>
+        @foreach ($circonscriptions as $circo)
+          <a href="/departement/{{$numDep}}/circonscription/{{$circo->numCirco}}" target="_blank"> {{$circo->numCirco}}@if ($circo->numCirco == 1) <sup>ère</sup> @else <sup>ème</sup> @endif circonscription</a>
+          <br>
+        @endforeach
     </div>
-
-    @foreach ($circonscriptions as $circo)
-      <a href="/departement/{{$dep}}/circonscription/{{$circo->numCirco}}" target="_blank">circonscription n°{{$circo->numCirco}}</a>
-      <br>
-    @endforeach
 @endsection
