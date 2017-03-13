@@ -20,7 +20,7 @@
 <body>
     <header>
         <!-- <h1 class="text-center">Legislatives - France Insoumise</h1> -->
-        <nav class="navbar navbar-supporter" style="margin-top: 0px; margin-bottom: 0px;">
+        <nav class="navbar navbar-supporter" style="margin-top: 0px; margin-bottom: 20px;">
           <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#supporter-nav-collapse" aria-expanded="false">
@@ -64,13 +64,9 @@
         </ul>
     </header>
 
-    <hr />
-
     <div class="container">
       @yield('data')
     </div>
-
-    <hr>
 
     <footer>
       <div class="container">
