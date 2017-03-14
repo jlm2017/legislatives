@@ -201,7 +201,7 @@ class CirconscriptionController extends Controller
             return view('circonscription.search')->withMessage('Veuillez sélectionner un numéro de département');
         }
 
-        return view('circonscription.list')->with(['numDep' => $dep, 'dep' => CirconscriptionController::$depts[$dep], 'circonscriptions' => $circonscriptions]);
+        return view('circonscription.list')->with(['deps' => CirconscriptionController::$depts, 'numDep' => $dep, 'dep' => CirconscriptionController::$depts[$dep], 'circonscriptions' => $circonscriptions]);
 
     }
 
@@ -223,7 +223,7 @@ class CirconscriptionController extends Controller
         if(empty($circonscription)){
             return view('circonscription/noExist')->withMessage("Cette circonscription n'existe pas ou n'a pas encore été mise à jour.");
         } else {
-            if ($circonscription->nomTitu === "not") {
+            if ($circonscription->nomTitu === "noexist") {
                 return view('circonscription/noExist')->withMessage($circonscription->bioTitu);
             } else {
                 // send circo coords to zoom on the map
