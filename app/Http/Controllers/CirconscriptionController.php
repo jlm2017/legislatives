@@ -175,8 +175,11 @@ class CirconscriptionController extends Controller
         } else {
             return view('circonscription.create')->withMessage('Le fichier est manquant !');
         }
-
-        CirconscriptionManager::import($file);
+        $errors = CirconscriptionManager::import($file);
+        if (count($errors) > 0) {
+          return view('circonscription.create')->with(['errorImort' => $errors]);
+        }
+        // print_r($msg_error);
         return view('circonscription.create')->withMessage('Le fichier a bien été importé !');
 
     }

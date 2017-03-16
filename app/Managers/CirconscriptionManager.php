@@ -17,10 +17,13 @@ class CirconscriptionManager
      * @return \Illuminate\Http\Response
      */
     public static function import($file){
-        //
-
-        Excel::load($file)->each(function (Collection $csvLine) {
-
+        $errors = [];
+        Excel::load($file)->each(function (Collection $csvLine, $nbline) use (&$errors) {
+            if ($csvLine->get('numdep') == NULL|| $csvLine->get('numcirco') == NULL ||
+                $csvLine->get('nomtitu') == NULL || $csvLine->get('biotitu') == NULL) {
+                  array_push($errors, 'erreur sur la ligne n°'.($nbline + 2).' :'.$csvLine);
+                  return false;
+                }
             $circonscription = Circonscription::updateOrCreate([
                 'numDep' => $csvLine->get('numdep'),
                 'numCirco' => $csvLine->get('numcirco'),
@@ -40,8 +43,8 @@ class CirconscriptionManager
             ]);
 
         });
+        return ($errors);
     }
-
     public static function getAll(){
         return DB::table('circonscriptions')->get();
     }
