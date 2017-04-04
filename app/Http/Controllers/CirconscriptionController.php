@@ -114,7 +114,9 @@ class CirconscriptionController extends Controller
                                 "973"=>"973 - Guyane",
                                 "974"=>"974 - Réunion",
                                 "975"=>"975 - Saint Pierre et Miquelon",
-                                "976"=>"976 - Mayotte");
+                                "976"=>"976 - Mayotte",
+                                "988"=>"988 - Nouvelle-Calédonie",
+                                "987"=>"987 - Polynésie-Française");
 
     public static $enumCirconscription = array( '1' => 'première',
                                                 '2' => 'deuxième',

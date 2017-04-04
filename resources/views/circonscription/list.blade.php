@@ -14,7 +14,7 @@
               {!! Form::label('dep', 'Choix du département&nbsp;:', ['class' => 'control-label']); !!}
               {!! Form::select('dep', $deps, $numDep, ['class' => 'form-control']); !!}
             </div>
-            {!! Form::submit('Rechercher !', array('class' => 'btn btn-large btn-primary openbutton col-xs-3')); !!}
+            {!! Form::submit('Rechercher', array('class' => 'btn btn-large btn-primary openbutton col-xs-3')); !!}
         {!! Form::close() !!}
       </div>
       <hr>

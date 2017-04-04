@@ -20,8 +20,8 @@
         <h3>Département {{$nomDep}} - {{$ordinal}} circonscription</h3>
     </div>
     <hr />
-    <div class="candidats text-center">
-        <div class="candidat">
+    <div class="candidats text-center container">
+        <div class="candidat col-sm-6">
             <div class="nom">
                 <h4>{{$circonscription->prenomTitu}} {{$circonscription->nomTitu}}</h4>
                 Titulaire
@@ -29,8 +29,6 @@
             <div class="photo">
                 @if(file_exists('/photos/'.$circonscription->numDep.'_'.$circonscription->numCirco.'_T.jpeg'))
                     <img src='/photos/{{$circonscription->numDep}}_{{$circonscription->numCirco}}_T.jpeg' alt="">
-                @else
-                    <img src='/photos/default.jpeg' alt="photoTitulaire">
                 @endif
             </div>
             <div class="bio">
@@ -38,7 +36,7 @@
             </div>
         </div>
 
-        <div class="candidat">
+        <div class="candidat col-sm-6">
             <div class="nom">
                 <h4>{{$circonscription->prenomSupp}} {{$circonscription->nomSupp}}</h4>
                 Suppléant
@@ -46,8 +44,6 @@
             <div class="photo">
                 @if(file_exists('/photos/'.$circonscription->numDep.'_'.$circonscription->numCirco.'_S.jpeg'))
                     <img src='/photos/{{$circonscription->numDep}}_{{$circonscription->numCirco}}_S.jpeg' alt="">
-                @else
-                    <img src='/photos/default.jpeg' alt="photoSuppléant">
                 @endif
 
             </div>
@@ -90,6 +86,7 @@
     </div>
 
     <div class="map text-center">
+      <h4>Événements et groupes d'appui dans cette circonscription</h4>
         <iframe
             style="border: none; margin: 0 0; padding: 0 0; width: 80%; height: 400px"
             src="https://jlm2017.github.io/map/?hide_address=1&borderfit={{$coords['maxlat']}},{{$coords['maxlong']}},{{$coords['minlat']}},{{$coords['minlong']}}">
