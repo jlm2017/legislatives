@@ -40,7 +40,6 @@
               <ul class="nav navbar-nav" role="group">
                 <li><a href="/">Accueil</a></li>
                 <li><a href="/circonscriptions">Les circonscriptions</a></li>
-                <li><a href="/formationLegislative">Formation législative</a></li>
                 <li><a href="https://avenirencommun.fr/" target="_blank">Programme</a></li>
               </ul>
               <ul class="nav navbar-nav pull-right">
