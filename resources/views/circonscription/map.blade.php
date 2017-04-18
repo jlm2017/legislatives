@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layoutHome')
 
 @section('title')
     Legislatives - France Insoumise
