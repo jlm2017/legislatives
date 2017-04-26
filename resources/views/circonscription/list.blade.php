@@ -22,7 +22,7 @@
       <hr>
       @foreach ($circonscriptions as $circo)
 
-        <h4>{{$dep}} - Circonscription n°{{$circo->circo}}</h4>
+        <h4>{{$dep}} - Circonscription n°{{$circo->numero}}</h4>
         <div class="row">
           @if($circo->titulaire_nom != 'noexist')
             <div class="col-sm-4 col-xs-12">
@@ -31,12 +31,12 @@
             <div class="col-sm-4 col-xs-12">
               <strong>Suppléant&nbsp;: </strong>{{ucfirst($circo->suppleant_prenom).' '.strtoupper($circo->suppleant_nom) }}
             </div>
-            <a href="/departement/{{$numDep}}/circonscription/{{$circo->circo}}" target="_blank" class="btn btn-sm btn-primary col-sm-3 col-sm-ofsset-1 col-xs-6">En voir plus</a>
+            <a href="/departement/{{$numDep}}/circonscription/{{$circo->numero}}" target="_blank" class="btn btn-sm btn-primary col-sm-3 col-sm-ofsset-1 col-xs-6">En voir plus</a>
           @else
             <p class="col-xs-12">{{$circo->titulaire_bio}}</p>
           @endif
         </div>
-        @if($circonscriptions->last()->circo != $circo->circo) <hr /> @endif
+        @if($circonscriptions->last()->numero != $circo->numero) <hr /> @endif
       @endforeach
     </div>
 @endsection

@@ -33,12 +33,12 @@ class CirconscriptionManager
 
             $circonscription = Circonscription::updateOrCreate([
                 'departement' => $csvLine->get('departement'),
-                'circo' => $csvLine->get('circo'),
+                'numero' => $csvLine->get('circo'),
             ],
 
             [
                 'departement' => $csvLine->get('departement'),
-                'circo' => $csvLine->get('circo'),
+                'numero' => $csvLine->get('circo'),
                 'titulaire_prenom' => $csvLine->get('titulaire_prenom'),
                 'titulaire_nom' => $csvLine->get('titulaire_nom'),
                 'titulaire_bio' => $csvLine->get('titulaire_bio'),
@@ -63,8 +63,8 @@ class CirconscriptionManager
         return DB::table('circonscriptions')->pluck('departement');
     }
 
-    public static function getCirco($departement, $circo){
-        return DB::table('circonscriptions')->where(['departement' => $departement, 'circo' => $circo])->first();
+    public static function getCirco($departement, $numero){
+        return DB::table('circonscriptions')->where(['departement' => $departement, 'numero' => $numero])->first();
     }
 
     public static function getCircos($departement){

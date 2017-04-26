@@ -9,7 +9,7 @@ class Circonscription extends Model
     //
     protected $fillable = [
         'departement',
-        'circo',
+        'numero',
         'titulaire_prenom',
         'titulaire_nom',
         'titulaire_bio',
