@@ -23,32 +23,32 @@
     <div class="candidats text-center container">
         <div class="candidat col-sm-6">
             <div class="nom">
-                <h4>{{$circonscription->prenomTitu}} {{$circonscription->nomTitu}}</h4>
+                <h4>{{$circonscription->titulaire_prenom}} {{$circonscription->titulaire_nom}}</h4>
                 Titulaire
             </div>
             <div class="photo">
-                @if(file_exists('/photos/'.$circonscription->numDep.'_'.$circonscription->numCirco.'_T.jpeg'))
-                    <img src='/photos/{{$circonscription->numDep}}_{{$circonscription->numCirco}}_T.jpeg' alt="">
+                @if(file_exists('/photos/'.$circonscription->departement.'_'.$circonscription->circo.'_T.jpeg'))
+                    <img src='/photos/{{$circonscription->departement}}_{{$circonscription->circo}}_T.jpeg' alt="">
                 @endif
             </div>
             <div class="bio">
-                <p class="text-center">{{$circonscription->bioTitu}}</p>
+                <p class="text-center">{{$circonscription->titulaire_bio}}</p>
             </div>
         </div>
 
         <div class="candidat col-sm-6">
             <div class="nom">
-                <h4>{{$circonscription->prenomSupp}} {{$circonscription->nomSupp}}</h4>
+                <h4>{{$circonscription->suppleant_prenom}} {{$circonscription->suppleant_nom}}</h4>
                 Suppléant
             </div>
             <div class="photo">
-                @if(file_exists('/photos/'.$circonscription->numDep.'_'.$circonscription->numCirco.'_S.jpeg'))
-                    <img src='/photos/{{$circonscription->numDep}}_{{$circonscription->numCirco}}_S.jpeg' alt="">
+                @if(file_exists('/photos/'.$circonscription->departement.'_'.$circonscription->circo.'_S.jpeg'))
+                    <img src='/photos/{{$circonscription->departement}}_{{$circonscription->circo}}_S.jpeg' alt="">
                 @endif
 
             </div>
             <div class="bio">
-                <p class="text-center">{{$circonscription->bioSupp}}</p>
+                <p class="text-center">{{$circonscription->suppleant_bio}}</p>
             </div>
         </div>
     </div>
@@ -73,13 +73,13 @@
                     <a class="btn btn-lg" href="{{$circonscription->blog}}" target="_blank">En savoir plus</a>
                 </div>
                 <div class="col-xs-6 text-center">
-                    <a class="btn btn-lg" href="mailto:{{$circonscription->email}}">{{$circonscription->email}}</a>
+                    <a class="btn btn-lg" href="mailto:{{$circonscription->email_campagne}}">{{$circonscription->email_campagne}}</a>
                 </div>
             </div>
         @else
             <div class="row">
                 <div class="col-xs-offset-3 col-xs-6 text-center">
-                    <a class="btn btn-lg" href="mailto:{{$circonscription->email}}">{{$circonscription->email}}</a>
+                    <a class="btn btn-lg" href="mailto:{{$circonscription->email_campagne}}">{{$circonscription->email_campagne}}</a>
                 </div>
             </div>
         @endif

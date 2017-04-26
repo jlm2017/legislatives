@@ -228,8 +228,8 @@ class CirconscriptionController extends Controller
         if(empty($circonscription)){
             return view('circonscription/noExist')->withMessage("Cette circonscription n'existe pas ou n'a pas encore été mise à jour.");
         } else {
-            if ($circonscription->nomTitu === "noexist") {
-                return view('circonscription/noExist')->withMessage($circonscription->bioTitu);
+            if ($circonscription->titulaire_nom === "noexist") {
+                return view('circonscription/noExist')->withMessage($circonscription->titulaire_bio);
             } else {
                 // send circo coords to zoom on the map
                 $json = json_decode(file_get_contents(storage_path() . "/minmaxCoordsCirco.json"), true);

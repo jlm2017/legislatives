@@ -19,45 +19,55 @@ class CirconscriptionManager
     public static function import($file){
         $errors = [];
         Excel::load($file)->each(function (Collection $csvLine, $nbline) use (&$errors) {
-            if ($csvLine->get('numdep') == NULL|| $csvLine->get('numcirco') == NULL ||
-                $csvLine->get('nomtitu') == NULL || $csvLine->get('biotitu') == NULL) {
-                  array_push($errors, 'erreur sur la ligne n°'.($nbline + 2).' :'.$csvLine);
-                  return false;
-                }
+            if ($csvLine->get('departement') == NULL|| $csvLine->get('circo') == NULL) {
+                array_push($errors, 'erreur sur la ligne n°'.($nbline + 2).' :'.$csvLine);
+
+                return false;
+            }
+
+            if ($csvLine->get('titulaire_nom') == NULL) {
+                array_push($errors, 'ligne n°'.($nbline + 2).' vide');
+
+                return false;
+            }
+
             $circonscription = Circonscription::updateOrCreate([
-                'numDep' => $csvLine->get('numdep'),
-                'numCirco' => $csvLine->get('numcirco'),
+                'departement' => $csvLine->get('departement'),
+                'circo' => $csvLine->get('circo'),
             ],
 
             [
-                'prenomTitu' => $csvLine->get('prenomtitu'),
-                'nomTitu' => $csvLine->get('nomtitu'),
-                'bioTitu' => $csvLine->get('biotitu'),
-                'prenomSupp' => $csvLine->get('prenomsupp'),
-                'nomSupp' => $csvLine->get('nomsupp'),
-                'bioSupp' => $csvLine->get('biosupp'),
+                'departement' => $csvLine->get('departement'),
+                'circo' => $csvLine->get('circo'),
+                'titulaire_prenom' => $csvLine->get('titulaire_prenom'),
+                'titulaire_nom' => $csvLine->get('titulaire_nom'),
+                'titulaire_bio' => $csvLine->get('titulaire_bio'),
+                'suppleant_prenom' => $csvLine->get('suppleant_prenom'),
+                'suppleant_nom' => $csvLine->get('suppleant_nom'),
+                'suppleant_bio' => $csvLine->get('suppleant_bio'),
                 'facebook' => $csvLine->get('facebook'),
                 'twitter' => $csvLine->get('twitter'),
-                'email' => $csvLine->get('email'),
+                'email_campagne' => $csvLine->get('email_campagne'),
                 'blog' => $csvLine->get('blog'),
             ]);
-
         });
+
         return ($errors);
     }
+
     public static function getAll(){
         return DB::table('circonscriptions')->get();
     }
 
     public static function getAllDep(){
-        return DB::table('circonscriptions')->pluck('numDep');
+        return DB::table('circonscriptions')->pluck('departement');
     }
 
-    public static function getCirco($numDep, $numCirco){
-        return DB::table('circonscriptions')->where(['numDep' => $numDep, 'numCirco' => $numCirco])->first();
+    public static function getCirco($departement, $circo){
+        return DB::table('circonscriptions')->where(['departement' => $departement, 'circo' => $circo])->first();
     }
 
-    public static function getCircos($numDep){
-        return DB::table('circonscriptions')->where('numDep', $numDep)->get();
+    public static function getCircos($departement){
+        return DB::table('circonscriptions')->where('departement', $departement)->get();
     }
 }

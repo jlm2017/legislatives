@@ -18,7 +18,7 @@ class Circonscription extends Model
         'suppleant_bio',
         'facebook',
         'twitter',
-        'email',
+        'email_campagne',
         'blog'
     ];
 
