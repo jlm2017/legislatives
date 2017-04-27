@@ -27,8 +27,8 @@
                 Titulaire
             </div>
             <div class="photo">
-                @if(file_exists('/photos/'.$circonscription->departement.'_'.$circonscription->numero.'_T.jpeg'))
-                    <img src='/photos/{{$circonscription->departement}}_{{$circonscription->numero}}_T.jpeg' alt="">
+                @if($photo_titulaire)
+                    <img src="{{ $photo_titulaire }}" alt="Photo du titulaire">
                 @endif
             </div>
             <div class="bio">
@@ -42,8 +42,8 @@
                 Suppléant
             </div>
             <div class="photo">
-                @if(file_exists('/photos/'.$circonscription->departement.'_'.$circonscription->numero.'_S.jpeg'))
-                    <img src='/photos/{{$circonscription->departement}}_{{$circonscription->numero}}_S.jpeg' alt="">
+                @if($photo_suppleant))
+                    <img src="{{ $photo_suppleant }}" alt="Photo du suppléant">
                 @endif
 
             </div>

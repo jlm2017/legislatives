@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Managers\CirconscriptionManager;
+use Illuminate\Support\Facades\Storage;
 
 class CirconscriptionController extends Controller
 {
@@ -233,7 +234,21 @@ class CirconscriptionController extends Controller
             } else {
                 // send circo coords to zoom on the map
                 $json = json_decode(file_get_contents(storage_path() . "/minmaxCoordsCirco.json"), true);
-                return view('circonscription.show')->with(['ordinal' => $ordinal, 'nomDep' => $nomDep, 'circonscription' => $circonscription, 'coords' => $json[$dep][$circo]]);
+                $photos = 'photos/published/'.$circonscription->departement.'_'.$circonscription->numero;
+                \Log::info($photos.'_titulaire.jpg');
+                $photo_titulaire = Storage::disk('public')->exists($photos.'_titulaire.jpg') ?
+                    '/storage/'.$photos.'_titulaire.jpg' : false;
+                $photo_suppleant = Storage::disk('public')->exists($photos.'_suppleant.jpg') ?
+                    '/storage/'.$photos.'_titulaire.jpg' : false;
+
+                return view('circonscription.show')->with([
+                    'ordinal' => $ordinal,
+                    'nomDep' => $nomDep,
+                    'circonscription' => $circonscription,
+                    'coords' => $json[$dep][$circo],
+                    'photo_titulaire' => $photo_titulaire,
+                    'photo_suppleant' => $photo_suppleant
+                ]);
             }
         }
     }
