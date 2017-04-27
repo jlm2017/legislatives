@@ -235,11 +235,12 @@ class CirconscriptionController extends Controller
             } else {
                 // send circo coords to zoom on the map
                 $json = json_decode(file_get_contents(storage_path() . "/minmaxCoordsCirco.json"), true);
-                $photos = 'photos/published/'.$circonscription->departement.'_'.$circonscription->numero;
+                $photos = 'photos/published/'.$circonscription->departement.'/';
+                $photos .= $circonscription->departement.'_'.$circonscription->numero;
                 $photo_titulaire = Storage::disk('public')->exists($photos.'_titulaire.jpg') ?
                     '/storage/'.$photos.'_titulaire.jpg' : false;
                 $photo_suppleant = Storage::disk('public')->exists($photos.'_suppleant.jpg') ?
-                    '/storage/'.$photos.'_titulaire.jpg' : false;
+                    '/storage/'.$photos.'_suppleant.jpg' : false;
 
                 return view('circonscription.show')->with([
                     'ordinal' => $ordinal,
