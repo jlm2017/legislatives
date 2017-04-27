@@ -22,13 +22,13 @@ class CirconscriptionManager
             if ($csvLine->get('departement') == NULL|| $csvLine->get('circo') == NULL) {
                 array_push($errors, 'erreur sur la ligne n°'.($nbline + 2).' :'.$csvLine);
 
-                return false;
+                return true;
             }
 
             if ($csvLine->get('titulaire_nom') == NULL) {
                 array_push($errors, 'ligne n°'.($nbline + 2).' vide');
 
-                return false;
+                return true;
             }
 
             $circonscription = Circonscription::updateOrCreate([
