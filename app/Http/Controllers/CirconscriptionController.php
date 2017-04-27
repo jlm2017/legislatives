@@ -116,7 +116,8 @@ class CirconscriptionController extends Controller
                                 "975"=>"975 - Saint Pierre et Miquelon",
                                 "976"=>"976 - Mayotte",
                                 "988"=>"988 - Nouvelle-Calédonie",
-                                "987"=>"987 - Polynésie-Française");
+                                "987"=>"987 - Polynésie-Française",
+                                "FE" => "FE - Circonscriptions des Francais de l'étranger");
 
     public static $enumCirconscription = array( '1' => 'première',
                                                 '2' => 'deuxième',
