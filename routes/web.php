@@ -53,4 +53,8 @@ Route::post('/circonscriptions', 'CirconscriptionController@list');
 
 Route::get('/formationLegislative', 'CirconscriptionController@formationLegislative');
 
+Route::get('/candidats/{id}', 'CandidatController@update')->name('candidat.update');
+
+Route::post('/candidats/{id}', 'CandidatController@store')->name('candidat.store');
+
 Auth::routes();

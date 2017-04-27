@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +90,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -164,6 +164,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         'Collective\Html\HtmlServiceProvider',
+        Watson\BootstrapForm\BootstrapFormServiceProvider::class,
 
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
@@ -232,6 +233,7 @@ return [
 
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+        'BootForm' => Watson\BootstrapForm\Facades\BootstrapForm::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
