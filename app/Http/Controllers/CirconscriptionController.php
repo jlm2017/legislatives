@@ -235,7 +235,6 @@ class CirconscriptionController extends Controller
                 // send circo coords to zoom on the map
                 $json = json_decode(file_get_contents(storage_path() . "/minmaxCoordsCirco.json"), true);
                 $photos = 'photos/published/'.$circonscription->departement.'_'.$circonscription->numero;
-                \Log::info($photos.'_titulaire.jpg');
                 $photo_titulaire = Storage::disk('public')->exists($photos.'_titulaire.jpg') ?
                     '/storage/'.$photos.'_titulaire.jpg' : false;
                 $photo_suppleant = Storage::disk('public')->exists($photos.'_suppleant.jpg') ?
