@@ -2,6 +2,8 @@
 
 use Illuminate\Foundation\Inspiring;
 
+use App\Circonscription;
+
 /*
 |--------------------------------------------------------------------------
 | Console Routes
@@ -16,3 +18,14 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+Artisan::command('getCircoRoad {fileName=circoRoad.csv}', function ($fileName) {
+    $circos = Circonscription::all();
+    $fp = fopen($_SERVER['DOCUMENT_ROOT'] . $fileName, "wb");
+    fwrite($fp,"numDep;numCirco;titulaire/suppléant;nom;prenom;token\n");
+    foreach ($circos as $circo) {
+      fputcsv($fp, [$circo->departement, $circo->circo, "t", $circo->titulaire_nom, $circo->titulaire_prenom, encrypt($circo->departement . "-" . $circo->circo . "-t")], ";");
+      fputcsv($fp, [$circo->departement, $circo->circo, "s", $circo->suppleant_nom, $circo->suppleant_prenom, encrypt($circo->departement . "-" . $circo->circo . "-s")], ";");
+    }
+    fclose($fp);
+})->describe('Generate csv file to get encrypted url for each candidate');
