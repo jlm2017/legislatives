@@ -111,6 +111,6 @@ class CandidatController extends Controller
 
         $candidat->save();
 
-        return redirect('https://jlm2017.fr/');
+        return redirect('https://jlm2017.fr/campagnes/campagne-legislatives-2017/merci/');
     }
 }
