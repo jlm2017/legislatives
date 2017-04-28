@@ -24,8 +24,8 @@ Artisan::command('getCircoRoad {fileName=circoRoad.csv}', function ($fileName) {
     $fp = fopen($_SERVER['DOCUMENT_ROOT'] . $fileName, "wb");
     fwrite($fp,"numDep;numCirco;titulaire/suppléant;nom;prenom;token\n");
     foreach ($circos as $circo) {
-      fputcsv($fp, [$circo->departement, $circo->circo, "t", $circo->titulaire_nom, $circo->titulaire_prenom, encrypt($circo->departement . "-" . $circo->circo . "-t")], ";");
-      fputcsv($fp, [$circo->departement, $circo->circo, "s", $circo->suppleant_nom, $circo->suppleant_prenom, encrypt($circo->departement . "-" . $circo->circo . "-s")], ";");
+      fputcsv($fp, [$circo->departement, $circo->numero, "t", $circo->titulaire_nom, $circo->titulaire_prenom, encrypt($circo->departement . "-" . $circo->circo . "-t")], ";");
+      fputcsv($fp, [$circo->departement, $circo->numero, "s", $circo->suppleant_nom, $circo->suppleant_prenom, encrypt($circo->departement . "-" . $circo->circo . "-s")], ";");
     }
     fclose($fp);
 })->describe('Generate csv file to get encrypted url for each candidate');
