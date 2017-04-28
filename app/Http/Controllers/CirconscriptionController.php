@@ -110,6 +110,7 @@ class CirconscriptionController extends Controller
                                 "93"=>"93 - Seine Saint Denis",
                                 "94"=>"94 - Val de Marne",
                                 "95"=>"95 - Val d'Oise",
+                                "99" => "99 - Circonscriptions des Francais de l'étranger",
                                 "971"=>"971 - Guadeloupe",
                                 "972"=>"972 - Martinique",
                                 "973"=>"973 - Guyane",
@@ -117,8 +118,7 @@ class CirconscriptionController extends Controller
                                 "975"=>"975 - Saint Pierre et Miquelon",
                                 "976"=>"976 - Mayotte",
                                 "988"=>"988 - Nouvelle-Calédonie",
-                                "987"=>"987 - Polynésie-Française",
-                                "FE" => "FE - Circonscriptions des Francais de l'étranger");
+                                "987"=>"987 - Polynésie-Française");
 
     public static $enumCirconscription = array( '1' => 'première',
                                                 '2' => 'deuxième',
