@@ -40,7 +40,7 @@ class CandidatController extends Controller
         if (!$candidat->photo) {
             $photo = 'photos/new/'.$circonscription->departement.'/';
             $photo .= join('_', [$circonscription->departement, $circonscription->numero, $place]).'.jpg';
-            $candidat->photo = Storage::disk('public')->exists($photo) ? '/storage/'.$photos : false;
+            $candidat->photo = Storage::disk('public')->exists($photo) ? '/storage/'.$photo : false;
         }
 
         return view('candidat.update')->with(['candidat' => $candidat, 'id' => $id]);
