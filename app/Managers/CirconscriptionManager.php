@@ -26,7 +26,10 @@ class CirconscriptionManager
             }
 
             if ($csvLine->get('titulaire_nom') == NULL) {
-                array_push($errors, 'ligne n°'.($nbline + 2).' vide');
+                Circonscription
+                    ::where('departement', $csvLine->get('departement'))
+                    ->where('numero', $csvLine->get('circo'))
+                    ->delete();
 
                 return true;
             }
