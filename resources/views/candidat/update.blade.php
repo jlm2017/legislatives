@@ -30,7 +30,7 @@
                 {!! BootForm::file('photo_file', 'Photo') !!}
                 <p>
                     Cette photo servira sur les documents officiels. Elle doit
-                    être en haute définition (300dpi), prise sur un fond uni,
+                    être en couleur, en haute définition (300dpi), prise sur un fond uni,
                     comporter votre visage et vos épaules, et sans vêtements
                     ou accessoires bleu-blanc-rouge.
                 @if($candidat->photo)
