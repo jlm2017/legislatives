@@ -27,6 +27,7 @@ class CandidatController extends Controller
         $candidat = \App\Candidat
             ::where('circonscription', $numero)
             ->where('departement', $departement)
+            ->where('titulaire', ($titulaire === 't'))
             ->first();
 
         if (!$candidat) {
