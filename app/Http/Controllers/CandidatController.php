@@ -61,6 +61,7 @@ class CandidatController extends Controller
         $candidat = \App\Candidat
             ::where('circonscription', $numero)
             ->where('departement', $departement)
+            ->where('titulaire', ($titulaire === 't'))
             ->first();
 
         if (!$candidat) {
@@ -68,6 +69,12 @@ class CandidatController extends Controller
             $candidat->departement = $departement;
             $candidat->circonscription = $numero;
             $candidat->titulaire = $titulaire === 't';
+        }
+
+        if (!$candidat->photo) {
+            $photo = 'photos/new/'.$circonscription->departement.'/';
+            $photo .= join('_', [$circonscription->departement, $circonscription->numero, $place]).'.jpg';
+            $candidat->photo = Storage::disk('public')->exists($photo) ? '/storage/'.$photo : false;
         }
 
         $this->validate($request, [
