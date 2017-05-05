@@ -34,6 +34,7 @@ class CandidatController extends Controller
             $candidat = new \App\Candidat();
             $candidat->departement = $departement;
             $candidat->circonscription = $numero;
+            $candidat->titulaire = $titulaire === 't';
             $candidat->nom = $circonscription->{$place.'_nom'};
             $candidat->prenom = $circonscription->{$place.'_prenom'};
         }

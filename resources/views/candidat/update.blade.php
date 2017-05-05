@@ -9,7 +9,8 @@
         <div class="col-responsive">
             <h3>Mettre à jour mes informations</h3>
             <p><strong>Département&nbsp;:</strong> {{ $candidat->departement }}</p>
-            <p><strong>Crisconscription&nbsp;:</strong> {{ $candidat->circonscription }}</p>
+            <p><strong>Cirsconscription&nbsp;:</strong> {{ $candidat->circonscription }}</p>
+            <p><strong>{{ $candidat->titulaire ? 'Titulaire' : 'Suppléant⋅e' }}</strong></p>
             {!! Form::component('bsText', 'components.form.text', ['name', 'value', 'attributes']) !!}
             {!! Form::model($candidat, ['route' => ['candidat.update', $id], 'files' => true]) !!}
                 <h3>Identité</h3>
