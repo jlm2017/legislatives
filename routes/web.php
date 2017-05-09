@@ -17,9 +17,15 @@
 Route::get('/', 'CirconscriptionController@map');
 
 /**
+ * List 1 departement
+ */
+Route::get('/departement/{dep}', 'CirconscriptionController@departementList')
+    ->name('circonscription.departementList');
+
+/**
  * Get 1 circonscription by departement and circonscription
  */
-Route::get('/departement/{dep}/circonscription/{circo}', 'CirconscriptionController@show')->where(['dep' => '[0-9]+', 'circo' => '[0-9]+']);
+Route::get('/departement/{dep}/circonscription/{circo}', 'CirconscriptionController@show')->where(['circo' => '[0-9]+']);
 
 /**
  * Get the form to upload a csv file
@@ -39,7 +45,7 @@ Route::get('/circonscriptions', 'CirconscriptionController@search');
 /**
  * Post the form to import csv file in database and create or update circonscription(s)
  */
-Route::post('/circonscriptions', 'CirconscriptionController@list');
+Route::post('/circonscriptions', 'CirconscriptionController@search');
 
 Route::get('/formationLegislative', 'CirconscriptionController@formationLegislative');
 

@@ -188,28 +188,39 @@ class CirconscriptionController extends Controller
 
     }
 
-    public function search()
-    {
-        return view('circonscription.search')->with(['deps' => CirconscriptionController::$depts]);
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function list(Request $request)
+    public function search(Request $request)
     {
         if ($request->has('dep')){
-            $dep = $request->dep;
-            $circonscriptions = CirconscriptionManager::getCircos($dep);
-        } else {
-            return view('circonscription.search')->withMessage('Veuillez sélectionner un numéro de département');
+            return redirect()->route('circonscription.departementList', ['dep' => $request->dep]);
         }
 
-        return view('circonscription.list')->with(['deps' => CirconscriptionController::$depts, 'numDep' => $dep, 'dep' => CirconscriptionController::$depts[$dep], 'circonscriptions' => $circonscriptions]);
+        return view('circonscription.search')
+            ->with(['deps' => CirconscriptionController::$depts])
+        ;
+    }
 
+    /**
+     * List people in departement
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function departementList($dep)
+    {
+        $circonscriptions = CirconscriptionManager::getCircos($dep);
+
+         return view('circonscription.list')->with([
+             'deps' => CirconscriptionController::$depts,
+             'numDep' => $dep,
+             'dep' => CirconscriptionController::$depts[$dep],
+             'circonscriptions' => $circonscriptions
+         ]);
     }
 
     /**
