@@ -91,6 +91,10 @@
             style="border: none; margin: 0 0; padding: 0 0; width: 80%; height: 400px"
             src="https://jlm2017.github.io/map/?hide_address=1&borderfit={{$coords['maxlat']}},{{$coords['maxlong']}},{{$coords['minlat']}},{{$coords['minlong']}}">
         </iframe>
+
+        <p>
+            <a href="http://f-i.jlm2017.fr/users/event_pages/new?parent_id=103" class="btn btn-primary">Créer un événément</a>
+        </p>
     </div>
 
     <style media="screen">
