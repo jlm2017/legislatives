@@ -31,12 +31,12 @@
         html, body {
           width: 100%;
           margin: 0;
-          height: 100%;
+          min-height: 100%;
         }
 
         #map {
             width: 100%;
-            height: 100%;
+            height: 500px;
         }
 
         a.maplink {
@@ -59,11 +59,16 @@
 @endsection
 
 @section('data')
-    <div class="map">
-        <!-- <a href="https://github.com/jlm2017" target="_blank" title="Fork me on GitHub">
-            <img src="https://jlm2017.github.io/theme/images/github_small.png" style="position: absolute; bottom: 10px; left: 10px; z-index: 1000;"/>
-        </a> -->
-
+        <h3 class= "text-center">Recherche des circonscriptions par département</h3>
+        <hr />
+        {!! Form::open(['url' => 'circonscriptions','class' => 'form-inline row']) !!}
+          <div class="col-xs-7 col-xs-offset-1">
+            {!! Form::label('dep', 'Choix du département&nbsp;:', ['class' => 'control-label']); !!}
+            {!! Form::select('dep', $deps, null, ['class' => 'form-control']); !!}
+           </div>
+         {!! Form::submit('Rechercher', array('class' => 'btn btn-large btn-primary openbutton col-xs-3')); !!}
+        {!! Form::close() !!}
+        <hr />
         <div id="map"></div>
 
         <script src="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.js"></script>
@@ -195,5 +200,4 @@
                 });
             });
         </script>
-    </div>
 @endsection

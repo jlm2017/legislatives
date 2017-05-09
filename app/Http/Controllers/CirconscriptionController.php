@@ -144,7 +144,7 @@ class CirconscriptionController extends Controller
 
     public function map()
     {
-        return view('circonscription.map');
+        return view('circonscription.map')->with(['deps' => CirconscriptionController::$depts]);
     }
 
     public function formationLegislative()
