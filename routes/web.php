@@ -22,16 +22,6 @@ Route::get('/', 'CirconscriptionController@map');
 Route::get('/departement/{dep}/circonscription/{circo}', 'CirconscriptionController@show')->where(['dep' => '[0-9]+', 'circo' => '[0-9]+']);
 
 /**
- * Get form to edit circonscription
- */
-Route::get('/departement/{dep}/circonscription/{circo}/edit', 'CirconscriptionController@edit')->where(['dep' => '[0-9]+', 'circo' => '[0-9]+']);
-
-/**
- * Update circonscription with form by post
- */
-Route::post('/departement/{dep}/circonscription/{circo}/edit', 'CirconscriptionController@update')->where(['dep' => '[0-9]+', 'circo' => '[0-9]+']);
-
-/**
  * Get the form to upload a csv file
  */
 Route::get('/circonscriptions/create', 'CirconscriptionController@create')->middleware('auth');
