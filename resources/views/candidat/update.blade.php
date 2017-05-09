@@ -58,8 +58,8 @@
 
                 <h3>Informations sur la campagne</h3>
                 {!! BootForm::email('email_campagne', 'Email de la campagne') !!}
-                {!! BootForm::text('twitter', 'Compte Twitter de la campagne') !!}
-                {!! BootForm::text('facebook', 'Page Facebook de la campagne') !!}
+                {!! BootForm::text('twitter', 'Compte Twitter de la campagne', null, ['placeholder' => 'https://twitter.com/identifiant']) !!}
+                {!! BootForm::text('facebook', 'Page Facebook de la campagne', null, ['placeholder' => 'https://facebook.com/VotrePage']) !!}
                 {!! BootForm::text('colistier_nom', 'Nom du colistier') !!}
                 {!! BootForm::text('colistier_prenom', 'Prénom du colistier') !!}
                 {!! BootForm::text('colistier_mail', 'Email du colistier') !!}
