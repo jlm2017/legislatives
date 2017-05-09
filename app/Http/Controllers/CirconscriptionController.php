@@ -147,11 +147,6 @@ class CirconscriptionController extends Controller
         return view('circonscription.map')->with(['deps' => CirconscriptionController::$depts]);
     }
 
-    public function formationLegislative()
-    {
-        return view('formationLegislative');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
