@@ -239,14 +239,33 @@ class CirconscriptionController extends Controller
             if ($circonscription->titulaire_nom === "noexist") {
                 return view('circonscription/noExist')->withMessage($circonscription->titulaire_bio);
             } else {
+                $titulaire = \App\Candidat
+                    ::where('circonscription', $circonscription->numero)
+                    ->where('departement', $circonscription->departement)
+                    ->where('titulaire', true)
+                    ->first();
+
+                $suppleant = \App\Candidat
+                    ::where('circonscription', $circonscription->numero)
+                    ->where('departement', $circonscription->departement)
+                    ->where('titulaire', false)
+                    ->first();
+
                 // send circo coords to zoom on the map
                 $json = json_decode(file_get_contents(storage_path() . "/minmaxCoordsCirco.json"), true);
                 $photos = 'photos/published/'.$circonscription->departement.'/';
                 $photos .= $circonscription->departement.'_'.$circonscription->numero;
-                $photo_titulaire = Storage::disk('public')->exists($photos.'_titulaire.jpg') ?
-                    '/storage/'.$photos.'_titulaire.jpg' : false;
-                $photo_suppleant = Storage::disk('public')->exists($photos.'_suppleant.jpg') ?
-                    '/storage/'.$photos.'_suppleant.jpg' : false;
+                $photo_titulaire = $titulaire && $titulaire->photo ?
+                    $titulaire->photo : (
+                        Storage::disk('public')->exists($photos.'_titulaire.jpg') ?
+                        '/storage/'.$photos.'_titulaire.jpg' : false
+                    );
+
+                $photo_suppleant = $suppleant && $suppleant->photo ?
+                    $suppleant->photo : (
+                        Storage::disk('public')->exists($photos.'_suppleant.jpg') ?
+                        '/storage/'.$photos.'_suppleant.jpg' : false
+                    );
 
                 return view('circonscription.show')->with([
                     'ordinal' => $ordinal,
