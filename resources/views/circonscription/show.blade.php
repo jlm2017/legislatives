@@ -42,7 +42,7 @@
                 Suppléant
             </div>
             <div class="photo">
-                @if($photo_suppleant))
+                @if($photo_suppleant)
                     <img src="{{ $photo_suppleant }}" alt="Photo du suppléant">
                 @endif
 
