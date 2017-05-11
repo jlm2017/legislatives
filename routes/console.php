@@ -29,3 +29,7 @@ Artisan::command('getCircoRoad {fileName=circoRoad.csv}', function ($fileName) {
     }
     fclose($fp);
 })->describe('Generate csv file to get encrypted url for each candidate');
+
+Artisan::command('getToken {departement} {circo} {place}', function ($departement, $circo, $place) {
+    $this->line(encrypt($departement.'-'.$circo.'-'.$place));
+});
