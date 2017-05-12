@@ -90,7 +90,7 @@ class CandidatController extends Controller
             'activite' => 'required|max:255',
             'email' => 'required|email',
             'telephone' => 'required|max:255',
-            'bio' => 'required|max:200',
+            'bio' => 'required',
             'email_campagne' => 'nullable|email',
             'twitter' => 'nullable|url',
             'facebook' => 'nullable|url',
