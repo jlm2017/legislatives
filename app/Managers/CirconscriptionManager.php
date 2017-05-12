@@ -18,6 +18,7 @@ class CirconscriptionManager
      */
     public static function import($file){
         $errors = [];
+        Circonscription::query()->truncate();
         Excel::load($file)->each(function (Collection $csvLine, $nbline) use (&$errors) {
             if ($csvLine->get('departement') == NULL|| $csvLine->get('circo') == NULL) {
                 array_push($errors, 'erreur sur la ligne n°'.($nbline + 2).' :'.$csvLine);
