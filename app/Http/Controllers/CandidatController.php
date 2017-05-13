@@ -84,7 +84,7 @@ class CandidatController extends Controller
             'nom_usage' => 'max:255',
             'prenom_usage' => 'max:255',
             'sexe' => 'required|in:M,F',
-            'photo_file' => !$candidat->photo ? 'required|image' : 'nullable|image',
+            'photo_file' => 'nullable|image',
             'charte' => 'boolean',
             'date_naissance' => 'required|date_format:d/m/Y',
             'activite' => 'required|max:255',
