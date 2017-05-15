@@ -8,6 +8,10 @@
     <div class="row">
         <div class="col-responsive">
             <h3>Mettre à jour mes informations</h3>
+            <p class="lead">
+                Ceci sont les informations qui seront rendues publiques et
+                apparaîtront sur le site et votre matériel de campagne.
+            </p>
             <p><strong>Département&nbsp;:</strong> {{ $candidat->departement }}</p>
             <p><strong>Cirsconscription&nbsp;:</strong> {{ $candidat->circonscription }}</p>
             <p><strong>{{ $candidat->titulaire ? 'Titulaire' : 'Suppléant⋅e' }}</strong></p>
