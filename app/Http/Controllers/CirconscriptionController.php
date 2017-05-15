@@ -281,11 +281,12 @@ class CirconscriptionController extends Controller
             $path = 'placeholder.png';
         }
 
-        $img = \Image::make(storage_path($path));
-
-        $img->resize(490, null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+        $img = \Image::cache(function($image) use ($path) {
+            $image->make(storage_path($path))
+                ->resize(490, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+        }, null, true);
 
         return $img->response('jpg');
     }
