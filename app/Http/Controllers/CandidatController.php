@@ -57,7 +57,7 @@ class CandidatController extends Controller
         $circonscription = \App\Circonscription
             ::where('numero', $numero)
             ->where('departement', $departement)
-            ->firstOrFail();
+            ->first();
 
         $place = $titulaire === 't' ? 'titulaire' : 'suppleant';
 
@@ -75,8 +75,8 @@ class CandidatController extends Controller
         }
 
         if (!$candidat->photo) {
-            $photo = 'photos/new/'.$circonscription->departement.'/';
-            $photo .= join('_', [$circonscription->departement, $circonscription->numero, $place]).'.jpg';
+            $photo = 'photos/new/'.$departement.'/';
+            $photo .= join('_', [$departement, $numero, $place]).'.jpg';
             $candidat->photo = Storage::disk('public')->exists($photo) ? '/storage/'.$photo : false;
         }
 
@@ -115,8 +115,8 @@ class CandidatController extends Controller
         $candidat->fill($request->all());
 
         if ($request->hasFile('photo_file')) {
-            $photo = '/photos/new/'.$circonscription->departement;
-            $photo .= '/'.implode('_', [$circonscription->departement, $circonscription->numero, $place]);
+            $photo = '/photos/new/'.$departement;
+            $photo .= '/'.implode('_', [$departement, $numero, $place]);
             $photoPath = $request->file('photo_file')->store($photo, 'public');
             $candidat->photo = '/storage/'.$photoPath;
         }
