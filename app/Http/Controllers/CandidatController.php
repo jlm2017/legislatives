@@ -22,7 +22,7 @@ class CandidatController extends Controller
         $circonscription = \App\Circonscription
             ::where('numero', $numero)
             ->where('departement', $departement)
-            ->firstOrFail();
+            ->first();
 
         $candidat = \App\Candidat
             ::where('circonscription', $numero)
@@ -35,13 +35,15 @@ class CandidatController extends Controller
             $candidat->departement = $departement;
             $candidat->circonscription = $numero;
             $candidat->titulaire = $titulaire === 't';
-            $candidat->nom = $circonscription->{$place.'_nom'};
-            $candidat->prenom = $circonscription->{$place.'_prenom'};
+            if ($circonscription) {
+                $candidat->nom = $circonscription->{$place.'_nom'};
+                $candidat->prenom = $circonscription->{$place.'_prenom'};
+            }
         }
 
         if (!$candidat->photo) {
-            $photo = 'photos/new/'.$circonscription->departement.'/';
-            $photo .= join('_', [$circonscription->departement, $circonscription->numero, $place]).'.jpg';
+            $photo = 'photos/new/'.$departement.'/';
+            $photo .= join('_', [$departement, $numero, $place]).'.jpg';
             $candidat->photo = Storage::disk('public')->exists($photo) ? '/storage/'.$photo : false;
         }
 
