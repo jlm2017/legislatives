@@ -27,9 +27,7 @@
                 Titulaire
             </div>
             <div class="photo">
-                @if($photo_titulaire)
-                    <img src="{{ $photo_titulaire }}" alt="Photo du titulaire">
-                @endif
+                <img src="/departement/{{$circonscription->departement}}/circonscription/{{$circonscription->numero}}/titulaire" alt="Photo du titulaire">
             </div>
             <div class="bio">
                 <p class="text-center">{{$circonscription->titulaire_bio}}</p>
@@ -42,10 +40,7 @@
                 Suppléant
             </div>
             <div class="photo">
-                @if($photo_suppleant)
-                    <img src="{{ $photo_suppleant }}" alt="Photo du suppléant">
-                @endif
-
+                <img src="/departement/{{$circonscription->departement}}/circonscription/{{$circonscription->numero}}/suppleant" alt="Photo du suppléant">
             </div>
             <div class="bio">
                 <p class="text-center">{{$circonscription->suppleant_bio}}</p>

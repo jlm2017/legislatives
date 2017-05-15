@@ -253,29 +253,36 @@ class CirconscriptionController extends Controller
 
                 // send circo coords to zoom on the map
                 $json = json_decode(file_get_contents(storage_path() . "/minmaxCoordsCirco.json"), true);
-                $photos = 'photos/published/'.$circonscription->departement.'/';
-                $photos .= $circonscription->departement.'_'.$circonscription->numero;
-                $photo_titulaire = $titulaire && $titulaire->photo ?
-                    $titulaire->photo : (
-                        Storage::disk('public')->exists($photos.'_titulaire.jpg') ?
-                        '/storage/'.$photos.'_titulaire.jpg' : false
-                    );
-
-                $photo_suppleant = $suppleant && $suppleant->photo ?
-                    $suppleant->photo : (
-                        Storage::disk('public')->exists($photos.'_suppleant.jpg') ?
-                        '/storage/'.$photos.'_suppleant.jpg' : false
-                    );
 
                 return view('circonscription.show')->with([
                     'ordinal' => $ordinal,
                     'nomDep' => $nomDep,
                     'circonscription' => $circonscription,
-                    'coords' => $json[$dep][$circo],
-                    'photo_titulaire' => $photo_titulaire,
-                    'photo_suppleant' => $photo_suppleant
+                    'coords' => $json[$dep][$circo]
                 ]);
             }
         }
+    }
+
+    public function photo($departement, $circonscription, $poste) {
+        $person = \App\Candidat
+            ::where('departement', $departement)
+            ->where('circonscription', $circonscription)
+            ->where('titulaire', ($poste == 'titulaire'))
+            ->first();
+
+        $published_path = 'photos/published/'.$departement.'_'.$circonscription.'_'.$poste.'.jpg';
+
+        if (Storage::disk('public')->exists($published_path)) {
+            $path = 'app/public'.$published_path;
+        } elseif ($person && $person->photo) {
+            $path = 'app/public/'.substr($person->photo, 8);
+        } else {
+            $path = 'placeholder.png';
+        }
+
+        $img = \Image::make(storage_path($path));
+
+        return $img->response('jpg');
     }
 }

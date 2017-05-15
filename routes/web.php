@@ -26,6 +26,11 @@ Route::get('/departement/{dep}', 'CirconscriptionController@departementList')
  * Get 1 circonscription by departement and circonscription
  */
 Route::get('/departement/{dep}/circonscription/{circo}', 'CirconscriptionController@show')->where(['circo' => '[0-9]+']);
+Route::get('/departement/{dep}/circonscription/{circo}/{poste}', 'CirconscriptionController@photo')
+    ->where([
+        'circo' => '[0-9]+',
+        'poste' => 'titulaire|suppleant'
+    ]);
 
 /**
  * Get the form to upload a csv file
