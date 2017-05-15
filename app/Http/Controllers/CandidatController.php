@@ -123,6 +123,6 @@ class CandidatController extends Controller
 
         $candidat->save();
 
-        return redirect('https://jlm2017.fr/campagnes/campagne-legislatives-2017/merci/');
+        return redirect('https://lafranceinsoumise.fr/campagnes/campagne-legislatives-2017/merci/');
     }
 }
