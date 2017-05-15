@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Candidat extends Model
 {
     protected $fillable = [
+        'erreur_materiel',
         'departement',
         'circonscription',
         'titulaire',

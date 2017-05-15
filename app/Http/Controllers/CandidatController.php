@@ -81,6 +81,7 @@ class CandidatController extends Controller
         }
 
         $this->validate($request, [
+            'erreur_materiel' => 'nullable|boolean',
             'nom' => 'required|max:255',
             'prenom' => 'required|max:255',
             'nom_usage' => 'max:255',

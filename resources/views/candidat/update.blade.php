@@ -14,6 +14,12 @@
             {!! Form::component('bsText', 'components.form.text', ['name', 'value', 'attributes']) !!}
             {!! Form::model($candidat, ['route' => ['candidat.update', $id], 'files' => true]) !!}
                 <h3>Identité</h3>
+                {!! BootForm::checkbox(
+                    'erreur_materiel',
+                    'Mon matériel a déjà été édité, et il y a une erreur sur mon nom ou prénom.',
+                    '1',
+                    false
+                ) !!}
                 {!! BootForm::text('nom') !!}
                 {!! BootForm::text('prenom') !!}
                 <hr>
