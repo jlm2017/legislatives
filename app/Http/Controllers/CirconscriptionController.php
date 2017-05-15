@@ -274,7 +274,7 @@ class CirconscriptionController extends Controller
         $published_path = 'photos/published/'.$departement.'_'.$circonscription.'_'.$poste.'.jpg';
 
         if (Storage::disk('public')->exists($published_path)) {
-            $path = 'app/public'.$published_path;
+            $path = 'app/public/'.$published_path;
         } elseif ($person && $person->photo) {
             $path = 'app/public/'.substr($person->photo, 8);
         } else {
