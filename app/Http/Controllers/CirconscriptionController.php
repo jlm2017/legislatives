@@ -283,6 +283,10 @@ class CirconscriptionController extends Controller
 
         $img = \Image::make(storage_path($path));
 
+        $img->resize(490, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+
         return $img->response('jpg');
     }
 }
