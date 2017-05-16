@@ -84,7 +84,7 @@
       <h4>Événements et groupes d'appui dans cette circonscription</h4>
         <iframe
             style="border: none; margin: 0 0; padding: 0 0; width: 80%; height: 400px"
-            src="https://jlm2017.github.io/map/?hide_address=1&borderfit={{$coords['maxlat']}},{{$coords['maxlong']}},{{$coords['minlat']}},{{$coords['minlong']}}">
+            src="https://jlm2017.github.io/map/?hide_address=1{{ $coords ? '&borderfit='.$coords['maxlat'].','.$coords['maxlong'].','.$coords['minlat'].','.$coords['minlong'] : ''}}">
         </iframe>
 
         <p>

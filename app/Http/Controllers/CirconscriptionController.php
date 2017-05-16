@@ -258,7 +258,7 @@ class CirconscriptionController extends Controller
                     'ordinal' => $ordinal,
                     'nomDep' => $nomDep,
                     'circonscription' => $circonscription,
-                    'coords' => $json[$dep][$circo]
+                    'coords' => isset($json[$dep]) ? $json[$dep][$circo] : false
                 ]);
             }
         }
