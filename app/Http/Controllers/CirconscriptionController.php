@@ -284,7 +284,7 @@ class CirconscriptionController extends Controller
         $img = \Image::cache(function($image) use ($path, $request) {
             $image = $image->make(storage_path($path));
 
-            if ($request->get('size') === 'original') {
+            if ($request->get('size') !== 'original') {
                 $image->resize(490, null, function ($constraint) {
                     $constraint->aspectRatio();
                 });
