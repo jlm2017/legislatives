@@ -264,7 +264,7 @@ class CirconscriptionController extends Controller
         }
     }
 
-    public function photo($departement, $circonscription, $poste) {
+    public function photo(Request $request, $departement, $circonscription, $poste) {
         $person = \App\Candidat
             ::where('departement', $departement)
             ->where('circonscription', $circonscription)
@@ -281,11 +281,14 @@ class CirconscriptionController extends Controller
             $path = 'placeholder.png';
         }
 
-        $img = \Image::cache(function($image) use ($path) {
-            $image->make(storage_path($path))
-                ->resize(490, null, function ($constraint) {
+        $img = \Image::cache(function($image) use ($path, $request) {
+            $image = $image->make(storage_path($path));
+
+            if ($request->get('size') === 'original') {
+                $image->resize(490, null, function ($constraint) {
                     $constraint->aspectRatio();
                 });
+            }
         }, null, true);
 
         return $img->response('jpg');
