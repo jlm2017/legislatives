@@ -190,6 +190,14 @@
             }
 
             var circonscriptions = httpGetJson('circo_json.json', function(data) {
+                data = data.filter(e => {
+                    if (!e.geojson.features[0]) {
+                        return false;
+                    }
+
+                    return {!!json_encode($circonscriptions)!!}.indexOf(e.departement + '-' + e.numero) !== -1;
+                });
+
                 data.forEach(function(element) {
                     if (element.geojson.features[0])
                     {

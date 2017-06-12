@@ -144,7 +144,14 @@ class CirconscriptionController extends Controller
 
     public function map()
     {
-        return view('circonscription.map')->with(['deps' => CirconscriptionController::$depts]);
+        $circonscriptions = CirconscriptionManager::getAll()->toArray();
+
+        return view('circonscription.map')->with([
+            'deps' => CirconscriptionController::$depts,
+            'circonscriptions' => array_map(function($circo) {
+                return $circo->departement.'-'.$circo->numero;
+            }, $circonscriptions)
+        ]);
     }
 
     /**
